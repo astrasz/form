@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Companies{% endblock %}
+
+{% block body %}
+
+<div class="row justify-content-center mx-auto">
+
+    <div class="col-12 table-responsive tableFixHead" style="max-width: 90vw">
+
+         <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">NIP</th>
+              <th scope="col">Nazwa</th>
+              <th scope="col">Ulica</th>
+              <th scope="col">Numer domu</th>
+              <th scope="col">Numer lokalu</th>
+              <th scope="col">Kod pocztowy</th>
+              <th scope="col">Miejscowość</th>
+              <th scope="col">Telefon</th>
+              <th scope="col">Email</th>
+              <th scope="col">Kto dodał</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for company in companies%}
+            <tr>
+              <th scope="row">{{company.id}}</th>
+              <td>{{company.nip}}</td>
+              <td>{{company.name}}}}</td>
+              <td>{{company.street}}</td>
+              <td>{{company.houseNr}}</td>
+              <td>{{company.flatNr}}</td>
+              <td>{{company.postcode}}</td>
+              <td>{{company.place}}</td>
+              <td>{{company.phone}}</td>
+              <td>{{company.email}}</td>
+              <td>{{company.createdBy.email}}</td>
+            </tr>
+            
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-apache
+    ports:
+      - 8000:80
+    networks:
+      - symfony-form
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: data_form
+    ports:
+      - 3386:3306
+    networks:
+      - symfony-form
+
+networks:
+  symfony-form:
